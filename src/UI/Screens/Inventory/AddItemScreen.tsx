@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
 
-import Button from "../components/Button";
-import { RootTabScreenProps } from "../navigation/types";
-import { colors } from "../theme/colors";
+import { RootTabScreenProps } from "../../../navigation/types";
+import { colors } from "../../../theme/colors";
+import Button from "../../Components/Button";
 
 export default function AddItemScreen({
   navigation,
