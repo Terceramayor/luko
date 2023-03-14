@@ -12,15 +12,15 @@ export const valuableCardStyles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: colors.white,
     width: CARD_WIDTH,
-    shadowColor: "#000",
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 5,
     },
-    shadowOpacity: 0.34,
-    shadowRadius: 6.27,
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
 
-    elevation: 10,
+    elevation: 3,
   },
   image: {
     borderRadius: 5,

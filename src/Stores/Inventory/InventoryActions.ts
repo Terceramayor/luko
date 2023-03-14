@@ -11,6 +11,17 @@ export const getValuablesAction = async (
   );
 };
 
+export const addValuableAction = (
+  purchasePrice: number,
+  name: string,
+  photo: string,
+  description?: string
+): Valuable => {
+  console.log("addValuableAction");
+
+  return { purchasePrice, name, photo, description };
+};
+
 const valuableAdapter = (valuable: ValuableResponse): Valuable => {
   return {
     purchasePrice: valuable.purchasePrice,

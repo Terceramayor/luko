@@ -39,7 +39,7 @@ export default function InventoryScreen({
     },
     []
   );
-
+  console.log("valuables", valuables.length);
   return (
     <View style={container}>
       <Title onButtonPress={handleAddButtonPress}>route.name</Title>
