@@ -1,3 +1,7 @@
+export interface getValuablesResponse {
+  data: ValuableResponse[];
+}
+
 export interface ValuableResponse {
   id: number;
   name: string;

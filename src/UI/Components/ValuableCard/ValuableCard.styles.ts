@@ -5,17 +5,19 @@ import { colors } from "../../../theme/Colors";
 import { fonts, getFontStyle, size } from "../../../theme/Fonts";
 import { LayoutDimensions } from "../../../theme/LayoutDimensions";
 
+const CARD_WIDTH = DeviceService.getScreenWidth() * 0.4;
+
 export const valuableCardStyles = StyleSheet.create({
   container: {
     borderRadius: 5,
     margin: LayoutDimensions.spacing8x,
     backgroundColor: colors.white,
-    width: DeviceService.getScreenWidth() * 0.5,
+    width: CARD_WIDTH,
   },
   image: {
     borderRadius: 5,
-    height: DeviceService.getScreenWidth() * 0.5,
-    width: DeviceService.getScreenWidth() * 0.5,
+    height: CARD_WIDTH,
+    width: CARD_WIDTH,
   },
   descriptionContainer: {
     padding: LayoutDimensions.spacing3x,

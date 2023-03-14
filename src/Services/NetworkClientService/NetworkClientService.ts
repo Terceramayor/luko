@@ -1,5 +1,5 @@
-import { ValuableResponse } from "../../Models/Inventory/Data/ValuableResponse";
+import { getValuablesResponse } from "../../Models/Inventory/Data/ValuableResponse";
 
 export interface NetworkClientService {
-  getInventory(): Promise<ValuableResponse[]>;
+  getInventory(): Promise<getValuablesResponse>;
 }

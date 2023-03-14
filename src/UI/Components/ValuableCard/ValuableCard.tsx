@@ -18,7 +18,7 @@ interface ValuableCardProps {
 
 export const ValuableCard = ({
   description = "Very Long Description Very Long Description",
-  price = "123456",
+  price = 123456,
   photoURL,
 }: ValuableCardProps) => {
   return (
