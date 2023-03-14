@@ -1,15 +1,18 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
 
 import { inventoryScreenStyles } from "./InventoryScreen.styles";
 import { Valuable } from "../../../../Models/Inventory/Domain/Valuable";
+import { DeviceService } from "../../../../Services/DeviceService/DeviceService";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
 import { RootTabScreenProps } from "../../../../navigation/types";
 import { colors } from "../../../../theme/Colors";
+import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
 import { Title } from "../../../Components/Title/Title";
 import { ValuableCard } from "../../../Components/ValuableCard/ValuableCard";
 
 const { container, listInnerContainer, listColumn } = inventoryScreenStyles;
+const CARD_WIDTH = DeviceService.getScreenWidth() * 0.4;
 
 export default function InventoryScreen({
   navigation,
@@ -22,15 +25,18 @@ export default function InventoryScreen({
   const { valuables, getValuables } = useInventoryStore((s) => ({
     valuables: s.valuables,
     getValuables: s.getValuables,
+    removeValuable: s.removeValuable,
   }));
-  const handleAddButtonPress = () => navigation.navigate("AddItem");
+  const handleAddButtonPress = () => navigation.navigate("AddItemScreen");
+
+  const [wrapperWidth, seWrapperWidth] = useState<number>(0);
 
   const renderValuableCard: ListRenderItem<Valuable> = useCallback(
-    ({ index, item: { description, purchasePrice, photo, name } }) => {
+    ({ index, item: { description, purchasePrice, photo, name, id } }) => {
       return (
         <ValuableCard
+          id={id}
           name={name}
-          key={index}
           description={description}
           price={purchasePrice}
           photoURL={photo}
@@ -39,11 +45,17 @@ export default function InventoryScreen({
     },
     []
   );
-  console.log("valuables", valuables.length);
   return (
-    <View style={container}>
-      <Title onButtonPress={handleAddButtonPress}>route.name</Title>
+    <View
+      style={container}
+      onLayout={(event) => {
+        seWrapperWidth(event.nativeEvent.layout.width);
+      }}
+    >
+      <Title onButtonPress={handleAddButtonPress}>Inventory</Title>
       <FlatList
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         columnWrapperStyle={listColumn}
         contentContainerStyle={listInnerContainer}
         renderItem={renderValuableCard}

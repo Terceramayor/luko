@@ -31,13 +31,6 @@ export function GetImage({ selectImage, selectedImage }: GetImageProps) {
   };
   return (
     <View style={container}>
-      <TouchableOpacity style={imageContainer}>
-        <Image
-          style={image}
-          source={require("../../../../assets/Images/camera.png")}
-        />
-        <Text>Take a picture</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={imageContainer} onPress={pickImageAsync}>
         <Image
           style={image}

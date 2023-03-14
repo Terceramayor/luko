@@ -1,7 +1,12 @@
 import { create } from "zustand";
 
-import { addValuableAction, getValuablesAction } from "./InventoryActions";
+import {
+  addValuableAction,
+  getValuablesAction,
+  removeValuableAction,
+} from "./InventoryActions";
 import { Valuable } from "../../Models/Inventory/Domain/Valuable";
+import { DeviceService } from "../../Services/DeviceService/DeviceService";
 
 export interface InventoryState {
   valuables: Valuable[];
@@ -12,6 +17,7 @@ export interface InventoryState {
     photo: string,
     description?: string
   ) => void;
+  removeValuable: (id: number) => void;
 }
 
 export const useInventoryStore = create<InventoryState>((set) => ({
@@ -29,12 +35,24 @@ export const useInventoryStore = create<InventoryState>((set) => ({
     description?: string
   ) =>
     set((state) => {
-      console.log("addValuable");
       return {
         ...state,
         valuables: state.valuables.concat(
-          addValuableAction(purchasePrice, name, photo, description)
+          addValuableAction(
+            state.valuables,
+            purchasePrice,
+            name,
+            photo,
+            description
+          )
         ),
+      };
+    }),
+  removeValuable: (id: number) =>
+    set((state) => {
+      return {
+        ...state,
+        valuables: removeValuableAction(state.valuables, id),
       };
     }),
 }));

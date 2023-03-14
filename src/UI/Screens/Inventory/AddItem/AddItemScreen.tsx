@@ -23,7 +23,7 @@ export default function AddItemScreen({
   const [selectedImage, setSelectedImage] = useState<string>("");
 
   const nameValidator = useCallback((name: string) => {
-    const validated = /^[a-zA-Z]+$/.test(name);
+    const validated = /^[a-zA-Z\s]*$/.test(name);
     return validated;
   }, []);
 
@@ -37,9 +37,13 @@ export default function AddItemScreen({
       addValuable(parseInt(price), name, selectedImage, description);
       navigation.pop();
     } else {
-      Alert.alert("Form incomplete", "Please fill all the mandatory fields");
+      Alert.alert(
+        "Form incomplete",
+        "Please fill all the mandatory fields, including the image"
+      );
     }
   };
+
   return (
     <View style={container}>
       <View style={buttonsContainer}>

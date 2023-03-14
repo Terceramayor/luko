@@ -5,7 +5,7 @@ import { colors } from "../../../theme/Colors";
 import { fonts, getFontStyle, size } from "../../../theme/Fonts";
 import { LayoutDimensions } from "../../../theme/LayoutDimensions";
 
-const CARD_WIDTH = DeviceService.getScreenWidth() * 0.35;
+const CARD_WIDTH = DeviceService.getScreenWidth() * 0.4;
 
 export const valuableCardStyles = StyleSheet.create({
   container: {
@@ -43,5 +43,21 @@ export const valuableCardStyles = StyleSheet.create({
   valuablePrice: {
     marginTop: LayoutDimensions.spacing8x,
     ...getFontStyle("regular", "content"),
+  },
+  removeContainer: {
+    position: "absolute",
+    right: 0,
+    margin: LayoutDimensions.spacing,
+    height: CARD_WIDTH * 0.25,
+    width: CARD_WIDTH * 0.25,
+    borderRadius: CARD_WIDTH * 0.25 * 0.5,
+  },
+  removeIcon: {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 0.75,
+    height: CARD_WIDTH * 0.2,
+    width: CARD_WIDTH * 0.2,
   },
 });

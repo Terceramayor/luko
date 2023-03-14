@@ -52,7 +52,7 @@ function RootNavigator() {
       <Stack.Group
         screenOptions={{ presentation: "modal", headerShown: false }}
       >
-        <Stack.Screen name="AddItem" component={AddItemScreen} />
+        <Stack.Screen name="AddItemScreen" component={AddItemScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
