@@ -1,10 +1,11 @@
 import { useCallback, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, View } from "react-native";
 
 import { addItemScreenStyles } from "./AddItemScreenStyles";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
 import { RootTabScreenProps } from "../../../../navigation/types";
 import Button from "../../../Components/Button/Button";
+import { GetImage } from "../../../Components/GetImage/GetImage";
 import { Input } from "../../../Components/Input/Input";
 
 const { container, buttonsContainer } = addItemScreenStyles;
@@ -19,7 +20,7 @@ export default function AddItemScreen({
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [formError, setFormError] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string>("");
 
   const nameValidator = useCallback((name: string) => {
     const validated = /^[a-zA-Z]+$/.test(name);
@@ -32,18 +33,20 @@ export default function AddItemScreen({
   }, []);
 
   const handleOnAdd = (): void => {
-    if (nameValidator(name) && priceValidator(price)) {
-      addValuable(parseInt(price), name, "photoURL", description);
-      //Pop screen
+    if (nameValidator(name) && priceValidator(price) && selectedImage) {
+      addValuable(parseInt(price), name, selectedImage, description);
+      navigation.pop();
+    } else {
+      Alert.alert("Form incomplete", "Please fill all the mandatory fields");
     }
   };
-
   return (
     <View style={container}>
       <View style={buttonsContainer}>
         <Button title="Cancel" onPress={() => navigation.goBack()} />
         <Button title="Add" onPress={handleOnAdd} />
       </View>
+      <GetImage selectImage={setSelectedImage} selectedImage={selectedImage} />
       <Input
         tag="Name"
         placeholder="Just letters e.g. Bracelet"
