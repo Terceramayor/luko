@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet, Pressable, PressableProps } from "react-native";
 
-import { colors } from "../../theme/colors";
+import { colors } from "../../../theme/Colors";
 
 export default function AddButton(props: PressableProps) {
   return (

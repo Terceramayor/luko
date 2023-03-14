@@ -4,7 +4,7 @@ import { ActivityIndicator } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import Navigation from "./src/navigation";
-import { fonts } from "./src/theme/fonts";
+import { fonts } from "./src/theme/Fonts";
 
 export default function App() {
   const [fontsLoaded] = useFonts({

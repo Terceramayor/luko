@@ -1,8 +1,9 @@
 import { StyleSheet, View } from "react-native";
 
-import { RootTabScreenProps } from "../../../navigation/types";
-import { colors } from "../../../theme/colors";
-import { Title } from "../../Components/Title";
+import { RootTabScreenProps } from "../../../../navigation/types";
+import { colors } from "../../../../theme/Colors";
+import { Title } from "../../../Components/Title/Title";
+import { ValuableCard } from "../../../Components/ValuableCard/ValuableCard";
 
 export default function InventoryScreen({
   navigation,
@@ -12,14 +13,15 @@ export default function InventoryScreen({
 
   return (
     <View style={styles.container}>
-      <Title onButtonPress={handleAddButtonPress}>{route.name}</Title>
+      <Title onButtonPress={handleAddButtonPress}>route.name</Title>
+      <ValuableCard />
+      <ValuableCard />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingHorizontal: 20,
     backgroundColor: colors.background,
   },

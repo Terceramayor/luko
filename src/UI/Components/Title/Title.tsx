@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
-import AddButton from "./AddButton";
-import { fonts } from "../../theme/fonts";
+import { fonts } from "../../../theme/Fonts";
+import AddButton from "../AddButtom/AddButton";
 
 export const Title = (props: {
   children: string;

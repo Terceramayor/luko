@@ -1,6 +1,6 @@
 import { Pressable, PressableProps, Text } from "react-native";
 
-import { colors } from "../../theme/colors";
+import { colors } from "../../../theme/Colors";
 
 export default function Button({
   title,

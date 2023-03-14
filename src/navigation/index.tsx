@@ -16,10 +16,10 @@ import {
   RootTabScreenProps,
 } from "./types";
 import { FallbackScreen } from "../UI/Screens/Fallback/FallbackScreen";
-import AddItemScreen from "../UI/Screens/Inventory/AddItemScreen";
-import InventoryScreen from "../UI/Screens/Inventory/InventoryScreen";
-import { colors } from "../theme/colors";
-import { fonts } from "../theme/fonts";
+import AddItemScreen from "../UI/Screens/Inventory/AddItem/AddItemScreen";
+import InventoryScreen from "../UI/Screens/Inventory/Inventory/InventoryScreen";
+import { colors } from "../theme/Colors";
+import { fonts } from "../theme/Fonts";
 
 export default function Navigation() {
   return (

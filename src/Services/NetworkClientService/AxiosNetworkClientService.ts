@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 
 import { NetworkClientService } from "./NetworkClientService";
-import { ValuableResponse } from "../Models/Inventory/Data/ValuableResponse";
+import { ValuableResponse } from "../../Models/Inventory/Data/ValuableResponse";
 
 class AxiosNetworkClientService implements NetworkClientService {
   private static instance: AxiosNetworkClientService;
