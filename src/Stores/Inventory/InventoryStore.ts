@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-import { getValuablesAction, InventoryActions } from "./InventoryActions";
+import { getValuablesAction } from "./InventoryActions";
 import { Valuable } from "../../Models/Inventory/Domain/Valuable";
 
 export interface InventoryState {

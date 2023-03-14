@@ -4,9 +4,9 @@ export const fonts = {
 };
 
 export const size = {
-  title: 50,
-  subTitle: 25,
-  content: 18,
+  title: 20,
+  subTitle: 15,
+  content: 12,
 };
 
 export const getFontStyle = (

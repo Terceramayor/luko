@@ -1,5 +1,6 @@
 export interface Valuable {
   purchasePrice: number;
-  description: string;
+  name: string;
+  description?: string;
   photo: string;
 }

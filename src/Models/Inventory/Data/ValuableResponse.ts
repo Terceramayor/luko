@@ -7,6 +7,6 @@ export interface ValuableResponse {
   name: string;
   purchasePrice: number;
   type: string;
-  description: string;
+  description?: string;
   photo: string;
 }

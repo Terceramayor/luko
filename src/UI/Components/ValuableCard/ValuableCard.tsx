@@ -5,20 +5,23 @@ import { valuableCardStyles } from "./ValuableCard.styles";
 const {
   container,
   image,
+  valuableName,
   valuableDescription,
   valuablePrice,
-  descriptionContainer,
+  infoContainer,
 } = valuableCardStyles;
 
 interface ValuableCardProps {
   description?: string;
-  price?: number;
-  photoURL?: string;
+  price: number;
+  photoURL: string;
+  name: string;
 }
 
 export const ValuableCard = ({
-  description = "Very Long Description Very Long Description",
-  price = 123456,
+  name,
+  description,
+  price,
   photoURL,
 }: ValuableCardProps) => {
   return (
@@ -26,11 +29,12 @@ export const ValuableCard = ({
       <Image
         style={image}
         source={{
-          uri: "https://i.ibb.co/znXC7LQ/marcus-lewis-U63z-XX2f7ho-unsplash.jpg",
+          uri: photoURL,
         }}
       />
-      <View style={descriptionContainer}>
-        <Text style={valuableDescription}>{description}</Text>
+      <View style={infoContainer}>
+        <Text style={valuableName}>{name}</Text>
+        {description && <Text style={valuableDescription}>{description}</Text>}
         <Text style={valuablePrice}>{`€ ${price}`}</Text>
       </View>
     </View>

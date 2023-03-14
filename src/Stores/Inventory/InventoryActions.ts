@@ -6,10 +6,9 @@ export const getValuablesAction = async (
   clientService = AxiosNetworkClientService
 ): Promise<Valuable[]> => {
   const valuablesResponse = await clientService.getInstance().getInventory();
-  const valuablesAdapted = valuablesResponse.data.map((valuableResponse) =>
+  return valuablesResponse.data.map((valuableResponse) =>
     valuableAdapter(valuableResponse)
   );
-  return valuablesAdapted;
 };
 
 const valuableAdapter = (valuable: ValuableResponse): Valuable => {
@@ -17,5 +16,6 @@ const valuableAdapter = (valuable: ValuableResponse): Valuable => {
     purchasePrice: valuable.purchasePrice,
     description: valuable.description,
     photo: valuable.photo,
+    name: valuable.name,
   };
 };
