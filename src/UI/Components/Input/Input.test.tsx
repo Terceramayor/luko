@@ -4,28 +4,11 @@ import React from "react";
 
 import { Input } from "./Input";
 import { inputStyles } from "./input.styles";
-import { colors } from "../../../theme/Colors";
 
 const fakeValidator = jest.fn(
   (paramToValidate: string) =>
     /^[a-zA-Z\s]*$/.test(paramToValidate) && paramToValidate.length > 0
 );
-
-const initialStyle = {
-  ...inputStyles.input,
-  borderColor: colors.secondaryGrey,
-  backgroundColor: colors.lightGrey,
-};
-const successStyle = {
-  ...inputStyles.input,
-  borderColor: colors.successDark,
-  backgroundColor: colors.successLight,
-};
-const failureStyle = {
-  ...inputStyles.input,
-  borderColor: colors.failureDark,
-  backgroundColor: colors.failureLight,
-};
 
 const TEST_ID = "input_test_id";
 const TEXT_INPUT = "a text input";
@@ -34,7 +17,7 @@ const defaultProps = {
   tag: "aTag",
   unit: "aUnit",
   value: { aGoodOne: "aValue", anUglyOne: "254afdsq4" },
-  setValue: () => {},
+  setValue: jest.fn(),
 };
 
 describe("Given the input component", () => {
@@ -42,7 +25,7 @@ describe("Given the input component", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
-  describe("When introduced a valid input", () => {
+  describe("When a valid value is send as prop", () => {
     it("The text input style should be set to the success one", async () => {
       const { getByTestId } = render(
         <Input
@@ -55,12 +38,11 @@ describe("Given the input component", () => {
       );
 
       const textInput = await waitFor(() => getByTestId(TEST_ID));
-      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
-      expect(textInput).toHaveStyle(successStyle);
+      expect(textInput).toHaveStyle(inputStyles.validatedInput);
     });
   });
-  describe("When introduced an invalid input", () => {
+  describe("When an invalid value is send as prop", () => {
     it("The text input style should be set to the failure one", async () => {
       const { getByTestId } = render(
         <Input
@@ -73,12 +55,11 @@ describe("Given the input component", () => {
       );
 
       const textInput = await waitFor(() => getByTestId(TEST_ID));
-      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
-      expect(textInput).toHaveStyle(failureStyle);
+      expect(textInput).toHaveStyle(inputStyles.errorInput);
     });
   });
-  describe("When introduced a random input when validation is not send as prop", () => {
+  describe("When a random value is send as prop and the validation is not send as prop", () => {
     it("The text input style should be set to the default one", async () => {
       const { getByTestId } = render(
         <Input
@@ -90,9 +71,38 @@ describe("Given the input component", () => {
       );
 
       const textInput = await waitFor(() => getByTestId(TEST_ID));
-      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
-      expect(textInput).toHaveStyle(initialStyle);
+      expect(textInput).toHaveStyle(inputStyles.initialInput);
+    });
+  });
+  describe("When a value is typed in the input field", () => {
+    it("The text input style should be set to the default one", async () => {
+      const { getByTestId } = render(
+        <Input
+          tag={defaultProps.tag}
+          value={defaultProps.value.anUglyOne}
+          setValue={defaultProps.setValue}
+          unit={defaultProps.unit}
+        />
+      );
+      const textInput = await waitFor(() => getByTestId(TEST_ID));
+      fireEvent.changeText(textInput, TEXT_INPUT);
+      expect(defaultProps.setValue).toHaveBeenCalled();
+    });
+  });
+  describe("When input is focused", () => {
+    it("The text input style should be set to the focused one", async () => {
+      const { getByTestId } = render(
+        <Input
+          tag={defaultProps.tag}
+          value={defaultProps.value.anUglyOne}
+          setValue={defaultProps.setValue}
+          unit={defaultProps.unit}
+        />
+      );
+      const textInput = await waitFor(() => getByTestId(TEST_ID));
+      fireEvent(textInput, "focus");
+      expect(textInput).toHaveStyle(inputStyles.onFocus);
     });
   });
 });
