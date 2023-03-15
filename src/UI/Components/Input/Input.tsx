@@ -4,7 +4,7 @@ import { Text, TextInput, TextInputAndroidProps, View } from "react-native";
 import { inputStyles } from "./input.styles";
 import { colors } from "../../../theme/Colors";
 
-const { container, input, tagText, unitContainer, inputWrapper } = inputStyles;
+const { input, tagText, unitContainer, inputWrapper } = inputStyles;
 
 interface InputProps {
   tag: string;
@@ -61,7 +61,7 @@ export function Input({
   }, [validation, value]);
 
   return (
-    <View style={container}>
+    <View>
       <Text style={tagText}>{tag}</Text>
       <View style={inputWrapper}>
         <TextInput

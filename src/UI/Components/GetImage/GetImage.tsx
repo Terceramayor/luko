@@ -16,27 +16,34 @@ interface GetImageProps {
   selectImage: Dispatch<SetStateAction<string>>;
 }
 
+const ALERT_MESSAGE = "You have not select any image!";
+const FOLDER_IMAGE = require("../../../../assets/Images/folder.png");
+const IMAGE_QUALITY = 1;
+const IMAGE_SELECTED = "Done";
+const IMAGE_NOT_SELECTED = "Pick a picture";
+
 export function GetImage({ selectImage, selectedImage }: GetImageProps) {
   const pickImageAsync = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      quality: 1,
+      quality: IMAGE_QUALITY,
     });
 
     if (!result.canceled && result.uri) {
       selectImage(result.uri);
     } else {
-      alert("You did not select any image!");
+      alert(ALERT_MESSAGE);
     }
   };
   return (
     <View style={container}>
       <TouchableOpacity style={imageContainer} onPress={pickImageAsync}>
-        <Image
-          style={image}
-          source={require("../../../../assets/Images/folder.png")}
-        />
-        {selectedImage ? <Text>Done</Text> : <Text>Pick a picture</Text>}
+        <Image style={image} source={FOLDER_IMAGE} />
+        {selectedImage ? (
+          <Text>{IMAGE_SELECTED}</Text>
+        ) : (
+          <Text>{IMAGE_NOT_SELECTED}</Text>
+        )}
         {selectedImage && (
           <Image style={selectedImageStyle} source={{ uri: selectedImage }} />
         )}

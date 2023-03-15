@@ -22,6 +22,8 @@ const {
   removeIcon,
 } = valuableCardStyles;
 
+const REMOVE_ICON = require("../../../../assets/Images/remove.png");
+
 interface ValuableCardProps {
   id: number;
   description?: string;
@@ -54,10 +56,7 @@ export const ValuableCard = ({
         }}
       />
       <TouchableOpacity style={removeContainer} onPress={removeItem}>
-        <Image
-          source={require("../../../../assets/Images/remove.png")}
-          style={removeIcon}
-        />
+        <Image source={REMOVE_ICON} style={removeIcon} />
       </TouchableOpacity>
       <View style={infoContainer}>
         <Text style={valuableName}>{name}</Text>

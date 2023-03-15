@@ -8,7 +8,20 @@ import Button from "../../../Components/Button/Button";
 import { GetImage } from "../../../Components/GetImage/GetImage";
 import { Input } from "../../../Components/Input/Input";
 
-const { container, buttonsContainer } = addItemScreenStyles;
+const { container, buttonsContainer, divider } = addItemScreenStyles;
+
+const FORM_ERROR_TITLE = "Form incomplete";
+const FORM_ERROR_MESSAGE =
+  "Please fill all the mandatory fields, including the image";
+
+const NAME = "Name";
+const VALUE = "Value";
+const DESCRIPTION = "Description";
+
+const NAME_PLACEHOLDER = "Just letters e.g. Bracelet";
+const VALUE_PLACEHOLDER = "Just numbers e.g. 700";
+const OPTIONAL_PLACEHOLDER = "Optional";
+const UNIT = "€";
 
 export default function AddItemScreen({
   navigation,
@@ -37,10 +50,7 @@ export default function AddItemScreen({
       addValuable(parseInt(price), name, selectedImage, description);
       navigation.pop();
     } else {
-      Alert.alert(
-        "Form incomplete",
-        "Please fill all the mandatory fields, including the image"
-      );
+      Alert.alert(FORM_ERROR_TITLE, FORM_ERROR_MESSAGE);
     }
   };
 
@@ -52,24 +62,25 @@ export default function AddItemScreen({
       </View>
       <GetImage selectImage={setSelectedImage} selectedImage={selectedImage} />
       <Input
-        tag="Name"
-        placeholder="Just letters e.g. Bracelet"
+        tag={NAME}
+        placeholder={NAME_PLACEHOLDER}
         validation={nameValidator}
         value={name}
         setValue={setName}
       />
-
+      <View style={divider} />
       <Input
-        tag="Value"
-        placeholder="Just numbers e.g. 700"
+        tag={VALUE}
+        placeholder={VALUE_PLACEHOLDER}
         validation={priceValidator}
         value={price}
         setValue={setPrice}
-        unit="Eur"
+        unit={UNIT}
       />
+      <View style={divider} />
       <Input
-        tag="Description"
-        placeholder="Optional"
+        tag={DESCRIPTION}
+        placeholder={OPTIONAL_PLACEHOLDER}
         placeHolderPosition="top"
         value={description}
         setValue={setDescription}

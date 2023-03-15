@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 
 import { colors } from "../../../../theme/Colors";
+import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
 
 export const addItemScreenStyles = StyleSheet.create({
   container: {
@@ -16,5 +17,8 @@ export const addItemScreenStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "transparent",
+  },
+  divider: {
+    height: LayoutDimensions.spacing5x,
   },
 });

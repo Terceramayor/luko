@@ -26,6 +26,9 @@ const failureStyle = {
   backgroundColor: colors.failureLight,
 };
 
+const TEST_ID = "input_test_id";
+const TEXT_INPUT = "a text input";
+
 const defaultProps = {
   tag: "aTag",
   unit: "aUnit",
@@ -39,7 +42,7 @@ describe("Given the input component", () => {
     jest.clearAllMocks();
   });
   describe("When introduced a valid input", () => {
-    it("", async () => {
+    it("The text input style should be set to the success one", async () => {
       const { getByTestId } = render(
         <Input
           tag={defaultProps.tag}
@@ -50,14 +53,14 @@ describe("Given the input component", () => {
         />
       );
 
-      const textInput = await waitFor(() => getByTestId("input_test_id"));
-      fireEvent.changeText(textInput, "a very valid text input");
+      const textInput = await waitFor(() => getByTestId(TEST_ID));
+      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
       expect(textInput).toHaveStyle(successStyle);
     });
   });
   describe("When introduced an invalid input", () => {
-    it("", async () => {
+    it("The text input style should be set to the failure one", async () => {
       const { getByTestId } = render(
         <Input
           tag={defaultProps.tag}
@@ -68,14 +71,14 @@ describe("Given the input component", () => {
         />
       );
 
-      const textInput = await waitFor(() => getByTestId("input_test_id"));
-      fireEvent.changeText(textInput, "a very valid text input");
+      const textInput = await waitFor(() => getByTestId(TEST_ID));
+      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
       expect(textInput).toHaveStyle(failureStyle);
     });
   });
   describe("When introduced a random input when validation is not send as prop", () => {
-    it("", async () => {
+    it("The text input style should be set to the default one", async () => {
       const { getByTestId } = render(
         <Input
           tag={defaultProps.tag}
@@ -85,8 +88,8 @@ describe("Given the input component", () => {
         />
       );
 
-      const textInput = await waitFor(() => getByTestId("input_test_id"));
-      fireEvent.changeText(textInput, "a very valid text input");
+      const textInput = await waitFor(() => getByTestId(TEST_ID));
+      fireEvent.changeText(textInput, TEXT_INPUT);
       fireEvent(textInput, "blur");
       expect(textInput).toHaveStyle(initialStyle);
     });
