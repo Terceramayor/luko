@@ -24,8 +24,8 @@ export default function InventoryScreen({
 
   const { valuables, getValuables } = useInventoryStore((s) => ({
     valuables: s.valuables,
-    getValuables: s.getValuables,
-    removeValuable: s.removeValuable,
+    getValuables: s.getValuablesAction,
+    removeValuable: s.removeValuableAction,
   }));
   const handleAddButtonPress = () => navigation.navigate("AddItemScreen");
 

@@ -38,7 +38,7 @@ export const ValuableCard = ({
   photoURL,
 }: ValuableCardProps) => {
   const { removeValuable } = useInventoryStore((s) => ({
-    removeValuable: s.removeValuable,
+    removeValuable: s.removeValuableAction,
   }));
 
   const removeItem = useCallback(() => {

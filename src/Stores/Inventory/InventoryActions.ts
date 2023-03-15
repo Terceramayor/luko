@@ -1,17 +1,17 @@
 import { ValuableResponse } from "../../Models/Inventory/Data/ValuableResponse";
 import { Valuable } from "../../Models/Inventory/Domain/Valuable";
-import { AxiosNetworkClientService } from "../../Services/NetworkClientService/AxiosNetworkClientService";
+import { NetworkClientService } from "../../Services/NetworkClientService/NetworkClientService";
 
-export const getValuablesAction = async (
-  clientService = AxiosNetworkClientService
+export const getValuables = async (
+  clientService: NetworkClientService
 ): Promise<Valuable[]> => {
-  const valuablesResponse = await clientService.getInstance().getInventory();
-  return valuablesResponse.data.map((valuableResponse) =>
+  const valuablesResponse = await clientService.getInventory();
+  return valuablesResponse.data.map((valuableResponse: any) =>
     valuableAdapter(valuableResponse)
   );
 };
 
-export const addValuableAction = (
+export const addValuable = (
   valuables: Valuable[],
   purchasePrice: number,
   name: string,
@@ -20,17 +20,16 @@ export const addValuableAction = (
 ): Valuable => {
   const id =
     valuables.length === 0
-      ? 0
+      ? 1
       : Math.max(...valuables.map((valuable) => valuable.id)) + 1;
 
   return { purchasePrice, name, photo, description, id };
 };
 
-export const removeValuableAction = (
+export const removeValuable = (
   valuables: Valuable[],
   id: number
 ): Valuable[] => {
-  console.log("removing", id);
   return valuables.filter((valuable) => valuable.id !== id);
 };
 

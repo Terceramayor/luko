@@ -1,4 +1,4 @@
-export interface getValuablesResponse {
+export interface ValuablesResponse {
   data: ValuableResponse[];
 }
 

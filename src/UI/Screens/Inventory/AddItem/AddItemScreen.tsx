@@ -14,7 +14,7 @@ export default function AddItemScreen({
   navigation,
 }: RootTabScreenProps<"AddItemScreen">) {
   const { addValuable } = useInventoryStore((s) => ({
-    addValuable: s.addValuable,
+    addValuable: s.addValuableAction,
   }));
 
   const [name, setName] = useState<string>("");
