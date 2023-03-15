@@ -6,8 +6,9 @@ import { Input } from "./Input";
 import { inputStyles } from "./input.styles";
 import { colors } from "../../../theme/Colors";
 
-const fakeValidator = jest.fn((paramToValidate: string) =>
-  /^[a-zA-Z\s]*$/.test(paramToValidate)
+const fakeValidator = jest.fn(
+  (paramToValidate: string) =>
+    /^[a-zA-Z\s]*$/.test(paramToValidate) && paramToValidate.length > 0
 );
 
 const initialStyle = {

@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Alert, View } from "react-native";
 
 import { addItemScreenStyles } from "./AddItemScreenStyles";
+import { calculateTotalValue } from "../../../../Helpers/calculateTotalValue";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
 import { RootTabScreenProps } from "../../../../navigation/types";
 import Button from "../../../Components/Button/Button";
@@ -13,6 +14,11 @@ const { container, buttonsContainer, divider } = addItemScreenStyles;
 const FORM_ERROR_TITLE = "Form incomplete";
 const FORM_ERROR_MESSAGE =
   "Please fill all the mandatory fields, including the image";
+
+const PRICE_LIMIT = 40000;
+const PRICE_ERROR_TITLE = `The limit of valuables insured exceeds the limit of ${PRICE_LIMIT} euros`;
+const PRICE_ERROR_MESSAGE =
+  "Please remove some items or add an item with a lower price";
 
 const NAME = "Name";
 const VALUE = "Value";
@@ -26,8 +32,9 @@ const UNIT = "€";
 export default function AddItemScreen({
   navigation,
 }: RootTabScreenProps<"AddItemScreen">) {
-  const { addValuable } = useInventoryStore((s) => ({
+  const { addValuable, valuables } = useInventoryStore((s) => ({
     addValuable: s.addValuableAction,
+    valuables: s.valuables,
   }));
 
   const [name, setName] = useState<string>("");
@@ -36,7 +43,7 @@ export default function AddItemScreen({
   const [selectedImage, setSelectedImage] = useState<string>("");
 
   const nameValidator = useCallback((name: string) => {
-    const validated = /^[a-zA-Z\s]*$/.test(name);
+    const validated = /^[a-zA-Z\s]*$/.test(name) && name.length > 0;
     return validated;
   }, []);
 
@@ -45,8 +52,17 @@ export default function AddItemScreen({
     return validated;
   }, []);
 
+  const currentTotalValue = useMemo(() => {
+    return calculateTotalValue(valuables);
+  }, [valuables]);
+
   const handleOnAdd = (): void => {
     if (nameValidator(name) && priceValidator(price) && selectedImage) {
+      if (currentTotalValue + parseInt(price) > PRICE_LIMIT) {
+        Alert.alert(PRICE_ERROR_TITLE, PRICE_ERROR_MESSAGE);
+        return;
+      }
+
       addValuable(parseInt(price), name, selectedImage, description);
       navigation.pop();
     } else {

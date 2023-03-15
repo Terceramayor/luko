@@ -2,9 +2,17 @@ import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { Text, TextInput, TextInputAndroidProps, View } from "react-native";
 
 import { inputStyles } from "./input.styles";
-import { colors } from "../../../theme/Colors";
 
-const { input, tagText, unitContainer, inputWrapper } = inputStyles;
+const {
+  input,
+  tagText,
+  unitContainer,
+  inputWrapper,
+  errorInput,
+  validatedInput,
+  initialInput,
+  onFocus: onFocusStyle,
+} = inputStyles;
 
 interface InputProps {
   tag: string;
@@ -28,6 +36,7 @@ export function Input({
   validation,
 }: InputProps) {
   const [error, setError] = useState<boolean | undefined>(undefined);
+  const [onFocus, setOnFocus] = useState<boolean>(false);
 
   const onChangeValue = (newValue: string) => {
     setValue(newValue);
@@ -36,29 +45,25 @@ export function Input({
   const inputStateStyle = useCallback((error: boolean | undefined) => {
     switch (error) {
       case true:
-        return {
-          borderColor: colors.failureDark,
-          backgroundColor: colors.failureLight,
-        };
+        return errorInput;
       case false:
-        return {
-          borderColor: colors.successDark,
-          backgroundColor: colors.successLight,
-        };
+        return validatedInput;
       default:
-        return {
-          borderColor: colors.secondaryGrey,
-          backgroundColor: colors.lightGrey,
-        };
+        return initialInput;
     }
   }, []);
 
-  const validator = useCallback(() => {
+  const handleOnBlur = useCallback(() => {
+    setOnFocus(false);
     if (!validation) {
       return;
     }
     setError(!validation(value));
   }, [validation, value]);
+
+  const handleOnFocus = () => {
+    setOnFocus(true);
+  };
 
   return (
     <View>
@@ -73,11 +78,13 @@ export function Input({
               height,
               ...inputStateStyle(error),
             },
+            onFocus && { ...onFocusStyle },
           ]}
           value={value}
           onChangeText={onChangeValue}
           placeholder={placeholder || ""}
-          onBlur={validator}
+          onBlur={handleOnBlur}
+          onFocus={handleOnFocus}
         />
         {unit && (
           <View style={unitContainer}>
