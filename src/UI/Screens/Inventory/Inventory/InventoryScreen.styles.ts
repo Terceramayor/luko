@@ -6,14 +6,14 @@ import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
 
 export const inventoryScreenStyles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
+    marginHorizontal: LayoutDimensions.spacing6x,
   },
   listInnerContainer: {
     marginTop: LayoutDimensions.spacing6x,
     display: "flex",
   },
   listColumn: {
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     marginBottom: LayoutDimensions.spacing6x,
   },
 });

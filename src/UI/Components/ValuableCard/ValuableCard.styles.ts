@@ -5,7 +5,8 @@ import { colors } from "../../../theme/Colors";
 import { fonts, getFontStyle, size } from "../../../theme/Fonts";
 import { LayoutDimensions } from "../../../theme/LayoutDimensions";
 
-const CARD_WIDTH = DeviceService.getScreenWidth() * 0.4;
+const CARD_WIDTH =
+  (DeviceService.getScreenWidth() - 3 * LayoutDimensions.spacing6x) * 0.5;
 
 export const valuableCardStyles = StyleSheet.create({
   container: {

@@ -6,8 +6,6 @@ import { Valuable } from "../../../../Models/Inventory/Domain/Valuable";
 import { DeviceService } from "../../../../Services/DeviceService/DeviceService";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
 import { RootTabScreenProps } from "../../../../navigation/types";
-import { colors } from "../../../../theme/Colors";
-import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
 import { Title } from "../../../Components/Title/Title";
 import { ValuableCard } from "../../../Components/ValuableCard/ValuableCard";
 
@@ -29,8 +27,6 @@ export default function InventoryScreen({
   }));
   const handleAddButtonPress = () => navigation.navigate("AddItemScreen");
 
-  const [wrapperWidth, seWrapperWidth] = useState<number>(0);
-
   const renderValuableCard: ListRenderItem<Valuable> = useCallback(
     ({ index, item: { description, purchasePrice, photo, name, id } }) => {
       return (
@@ -46,12 +42,7 @@ export default function InventoryScreen({
     []
   );
   return (
-    <View
-      style={container}
-      onLayout={(event) => {
-        seWrapperWidth(event.nativeEvent.layout.width);
-      }}
-    >
+    <View style={container}>
       <Title onButtonPress={handleAddButtonPress}>Inventory</Title>
       <FlatList
         showsVerticalScrollIndicator={false}
