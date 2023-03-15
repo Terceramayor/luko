@@ -10,7 +10,7 @@ describe("Given the inventory store actions", () => {
   beforeEach(() => {
     axiosNetworkClientService = Mock.ofType<NetworkClientService>();
   });
-  describe("Given the getValuablesAction action ", () => {
+  describe("Given the getValuables action ", () => {
     describe("When invoked for a valid response of valuables", () => {
       it("It should return a correctly adapted response", async () => {
         axiosNetworkClientService
@@ -30,7 +30,7 @@ describe("Given the inventory store actions", () => {
       });
     });
   });
-  describe("Given the addValuableAction action", () => {
+  describe("Given the addValuable action", () => {
     describe("When  invoked and the valuables list is not empty", () => {
       it("The new valuable should be created correctly ", () => {
         const newValuable = addValuable(
@@ -54,7 +54,7 @@ describe("Given the inventory store actions", () => {
       });
     });
   });
-  describe("Given the removeValuableAction action", () => {
+  describe("Given the removeValuable action", () => {
     describe("When invoked for an existing id", () => {
       it("THe correct valuable should be filtered out", () => {
         const updatedValuables = removeValuable(aListOfValuables, 1);

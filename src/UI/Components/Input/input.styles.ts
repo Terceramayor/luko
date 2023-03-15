@@ -5,7 +5,6 @@ import { getFontStyle } from "../../../theme/Fonts";
 import { LayoutDimensions } from "../../../theme/LayoutDimensions";
 
 export const inputStyles = StyleSheet.create({
-  container: {},
   tagText: {
     ...getFontStyle("bold", "subTitle"),
     marginBottom: LayoutDimensions.spacing3x,

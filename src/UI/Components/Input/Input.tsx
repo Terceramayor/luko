@@ -32,6 +32,7 @@ export function Input({
   const onChangeValue = (newValue: string) => {
     setValue(newValue);
   };
+
   const inputStateStyle = useCallback((error: boolean | undefined) => {
     switch (error) {
       case true:
@@ -64,6 +65,7 @@ export function Input({
       <Text style={tagText}>{tag}</Text>
       <View style={inputWrapper}>
         <TextInput
+          testID="input_test_id"
           textAlignVertical={placeHolderPosition || "center"}
           style={[
             input,
