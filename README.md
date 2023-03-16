@@ -4,7 +4,7 @@ This is the project for the Luko technical test app, developed for iOS and Andro
 
 ## How to install
 
-- Clone the repo from `xxxxx`
+- Clone the repo from `https://github.com/Terceramayor/luko.git`
 - Go to the project directory in your console terminal
 - Install the node dependencies`npm install`
 
