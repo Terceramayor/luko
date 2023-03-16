@@ -1,5 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
-import { Alert, View } from "react-native";
+import { Alert, Dimensions, ScrollView, View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { ScreenStack } from "react-native-screens";
 
 import { addItemScreenStyles } from "./AddItemScreenStyles";
 import { calculateTotalValue } from "../../../../Helpers/calculateTotalValue";
@@ -76,32 +78,39 @@ export default function AddItemScreen({
         <Button title="Cancel" onPress={() => navigation.goBack()} />
         <Button title="Add" onPress={handleOnAdd} />
       </View>
-      <GetImage selectImage={setSelectedImage} selectedImage={selectedImage} />
-      <Input
-        tag={addItemScreenText.NAME}
-        placeholder={addItemScreenText.NAME_PLACEHOLDER}
-        validation={nameValidator}
-        value={name}
-        setValue={setName}
-      />
-      <View style={divider} />
-      <Input
-        tag={addItemScreenText.VALUE}
-        placeholder={addItemScreenText.VALUE_PLACEHOLDER}
-        validation={priceValidator}
-        value={price}
-        setValue={setPrice}
-        unit={addItemScreenText.UNIT}
-      />
-      <View style={divider} />
-      <Input
-        tag={addItemScreenText.DESCRIPTION}
-        placeholder={addItemScreenText.OPTIONAL_PLACEHOLDER}
-        placeHolderPosition="top"
-        value={description}
-        setValue={setDescription}
-        height={100}
-      />
+      <KeyboardAwareScrollView>
+        <GetImage
+          selectImage={setSelectedImage}
+          selectedImage={selectedImage}
+        />
+        <ScrollView>
+          <Input
+            tag={addItemScreenText.NAME}
+            placeholder={addItemScreenText.NAME_PLACEHOLDER}
+            validation={nameValidator}
+            value={name}
+            setValue={setName}
+          />
+          <View style={divider} />
+          <Input
+            tag={addItemScreenText.VALUE}
+            placeholder={addItemScreenText.VALUE_PLACEHOLDER}
+            validation={priceValidator}
+            value={price}
+            setValue={setPrice}
+            unit={addItemScreenText.UNIT}
+          />
+          <View style={divider} />
+          <Input
+            tag={addItemScreenText.DESCRIPTION}
+            placeholder={addItemScreenText.OPTIONAL_PLACEHOLDER}
+            placeHolderPosition="top"
+            value={description}
+            setValue={setDescription}
+            height={100}
+          />
+        </ScrollView>
+      </KeyboardAwareScrollView>
     </View>
   );
 }
