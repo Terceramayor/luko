@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 import { getImageStyles } from "./GetImage.styles";
-import { textProvider } from "../../../Text/textProvider";
+import { stringsProvider } from "../../../Strings/stringsProvider";
 
 const {
   container,
@@ -20,7 +20,7 @@ interface GetImageProps {
 const FOLDER_IMAGE = require("../../../../assets/Images/folder.png");
 const IMAGE_QUALITY = 1;
 
-const getImageText = textProvider([
+const getImageText = stringsProvider([
   "ALERT_MESSAGE",
   "IMAGE_NOT_SELECTED",
   "IMAGE_NOT_SELECTED",

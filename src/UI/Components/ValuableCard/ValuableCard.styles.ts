@@ -10,7 +10,7 @@ const CARD_WIDTH =
 
 export const valuableCardStyles = StyleSheet.create({
   container: {
-    borderRadius: 5,
+    borderRadius: 10,
     backgroundColor: colors.white,
     width: CARD_WIDTH,
     shadowColor: colors.black,

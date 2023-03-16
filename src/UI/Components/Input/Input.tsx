@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { Text, TextInput, TextInputAndroidProps, View } from "react-native";
 
 import { inputStyles } from "./input.styles";
+import { colors } from "../../../Theme/Colors";
 
 const {
   input,
@@ -23,6 +24,7 @@ interface InputProps {
   placeholder?: string;
   placeHolderPosition?: TextInputAndroidProps["textAlignVertical"];
   validation?: (value: string) => boolean;
+  maxLength?: number;
 }
 
 export function Input({
@@ -34,6 +36,7 @@ export function Input({
   unit,
   placeHolderPosition,
   validation,
+  maxLength,
 }: InputProps) {
   const [error, setError] = useState<boolean | undefined>(undefined);
   const [onFocus, setOnFocus] = useState<boolean>(false);
@@ -70,6 +73,8 @@ export function Input({
       <Text style={tagText}>{tag}</Text>
       <View style={inputWrapper}>
         <TextInput
+          maxLength={maxLength || undefined}
+          multiline
           testID="input_test_id"
           textAlignVertical={placeHolderPosition || "center"}
           style={[
@@ -83,6 +88,7 @@ export function Input({
           value={value}
           onChangeText={onChangeValue}
           placeholder={placeholder || ""}
+          placeholderTextColor={colors.secondaryGrey}
           onBlur={handleOnBlur}
           onFocus={handleOnFocus}
         />

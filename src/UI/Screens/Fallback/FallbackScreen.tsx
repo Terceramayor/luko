@@ -11,7 +11,6 @@ export const FallbackScreen = ({ route }: RootTabScreenProps<"Inventory">) => {
       style={{
         backgroundColor: colors.background,
         flex: 1,
-        paddingHorizontal: 20,
       }}
     >
       <Title>{route?.name}</Title>

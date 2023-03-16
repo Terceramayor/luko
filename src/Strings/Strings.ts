@@ -1,4 +1,4 @@
-export const TEXT = {
+export const Strings = {
   IMAGE_SELECTED: "Done",
   IMAGE_NOT_SELECTED: "Pick a picture",
   ALERT_MESSAGE: "You have not select any image!",

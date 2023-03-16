@@ -6,7 +6,7 @@ import { ScreenStack } from "react-native-screens";
 import { addItemScreenStyles } from "./AddItemScreenStyles";
 import { calculateTotalValue } from "../../../../Helpers/calculateTotalValue";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
-import { textProvider } from "../../../../Text/textProvider";
+import { stringsProvider } from "../../../../Strings/stringsProvider";
 import { RootTabScreenProps } from "../../../../navigation/types";
 import Button from "../../../Components/Button/Button";
 import { GetImage } from "../../../Components/GetImage/GetImage";
@@ -17,7 +17,7 @@ const { container, buttonsContainer, divider } = addItemScreenStyles;
 const PRICE_LIMIT = 40000;
 const PRICE_ERROR_TITLE = `The limit of valuables insured exceeds the limit of ${PRICE_LIMIT} euros`;
 
-const addItemScreenText = textProvider([
+const addItemScreenText = stringsProvider([
   "FORM_ERROR_TITLE",
   "FORM_ERROR_MESSAGE",
   "PRICE_ERROR_MESSAGE",
@@ -85,6 +85,7 @@ export default function AddItemScreen({
         />
         <ScrollView>
           <Input
+            maxLength={30}
             tag={addItemScreenText.NAME}
             placeholder={addItemScreenText.NAME_PLACEHOLDER}
             validation={nameValidator}
@@ -93,6 +94,7 @@ export default function AddItemScreen({
           />
           <View style={divider} />
           <Input
+            maxLength={30}
             tag={addItemScreenText.VALUE}
             placeholder={addItemScreenText.VALUE_PLACEHOLDER}
             validation={priceValidator}

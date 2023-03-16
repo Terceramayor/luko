@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 import { fonts } from "../../../Theme/Fonts";
+import { LayoutDimensions } from "../../../Theme/LayoutDimensions";
 import AddButton from "../AddButtom/AddButton";
 
 export const Title = (props: {
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     lineHeight: 42,
   },
   titleContainer: {
+    paddingHorizontal: LayoutDimensions.spacing6x,
     width: "100%",
     height: 42,
     marginTop: 99,

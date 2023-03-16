@@ -1,7 +1,6 @@
 # Luko technical test app
 
-This is the project for the Luko technical test app, developed for iOS and Android.
-Developed with Expo + TypeScript
+This is the project for the Luko technical test app, developed for iOS and Android using Expo + TypeScript
 
 ## How to install
 
@@ -21,7 +20,7 @@ Developed with Expo + TypeScript
 
 ## Devices tested
 
-- The app has been successfully tested on the following devices:
+- The app has been tested on the following devices:
     - For iOS:
         - Iphone 12 in physical device
     - For Android:
