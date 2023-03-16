@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
-import { Alert, Dimensions, ScrollView, View } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { ScreenStack } from "react-native-screens";
 
 import { addItemScreenStyles } from "./AddItemScreenStyles";
 import { calculateTotalValue } from "../../../../Helpers/calculateTotalValue";
@@ -85,7 +84,7 @@ export default function AddItemScreen({
         />
         <ScrollView>
           <Input
-            maxLength={30}
+            maxLength={15}
             tag={addItemScreenText.NAME}
             placeholder={addItemScreenText.NAME_PLACEHOLDER}
             validation={nameValidator}
@@ -94,7 +93,7 @@ export default function AddItemScreen({
           />
           <View style={divider} />
           <Input
-            maxLength={30}
+            maxLength={15}
             tag={addItemScreenText.VALUE}
             placeholder={addItemScreenText.VALUE_PLACEHOLDER}
             validation={priceValidator}

@@ -52,8 +52,12 @@ export const ValuableCard = ({
         <Image source={REMOVE_ICON} style={removeIcon} />
       </TouchableOpacity>
       <View style={infoContainer}>
-        <Text style={valuableName}>{name}</Text>
-        {description && <Text style={valuableDescription}>{description}</Text>}
+        <View>
+          <Text style={valuableName}>{name}</Text>
+          {description && (
+            <Text style={valuableDescription}>{description}</Text>
+          )}
+        </View>
         <Text style={valuablePrice}>{`€ ${price}`}</Text>
       </View>
     </View>

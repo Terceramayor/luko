@@ -33,8 +33,8 @@ export function GetImage({ selectImage, selectedImage }: GetImageProps) {
       quality: IMAGE_QUALITY,
     });
 
-    if (!result.canceled && result.uri) {
-      selectImage(result.uri);
+    if (!result.canceled && result?.assets[0].uri) {
+      selectImage(result?.assets[0].uri);
     } else {
       alert(getImageText.ALERT_MESSAGE);
     }

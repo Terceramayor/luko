@@ -13,6 +13,7 @@ export const valuableCardStyles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.white,
     width: CARD_WIDTH,
+    height: CARD_WIDTH * 2,
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,
@@ -35,10 +36,12 @@ export const valuableCardStyles = StyleSheet.create({
   },
   valuableName: {
     marginBottom: LayoutDimensions.spacing,
-    ...getFontStyle("regular", "title"),
+    ...getFontStyle("bold", "title"),
   },
   valuableDescription: {
     ...getFontStyle("regular", "subTitle"),
+    overflow: "hidden",
+    textOverflow: "ellipsis",
   },
   valuablePrice: {
     marginTop: LayoutDimensions.spacing8x,
