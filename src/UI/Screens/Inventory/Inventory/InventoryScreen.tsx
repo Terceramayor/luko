@@ -25,7 +25,7 @@ export default function InventoryScreen({
   const handleAddButtonPress = () => navigation.navigate("AddItemScreen");
 
   const renderValuableCard: ListRenderItem<Valuable> = useCallback(
-    ({ index, item: { description, purchasePrice, photo, name, id } }) => {
+    ({ item: { description, purchasePrice, photo, name, id } }) => {
       return (
         <ValuableCard
           id={id}

@@ -42,13 +42,11 @@ export default function AddItemScreen({
   const [selectedImage, setSelectedImage] = useState<string>("");
 
   const nameValidator = useCallback((name: string) => {
-    const validated = /^[a-zA-Z\s]*$/.test(name) && name.length > 0;
-    return validated;
+    return /^[a-zA-Z\s]*$/.test(name) && name.length > 0;
   }, []);
 
   const priceValidator = useCallback((price: string) => {
-    const validated = /^\d+$/.test(price);
-    return validated;
+    return /^\d+$/.test(price);
   }, []);
 
   const currentTotalValue = useMemo(() => {
@@ -57,12 +55,12 @@ export default function AddItemScreen({
 
   const handleOnAdd = (): void => {
     if (nameValidator(name) && priceValidator(price) && selectedImage) {
-      if (currentTotalValue + parseInt(price) > PRICE_LIMIT) {
+      if (currentTotalValue + parseInt(price, 10) > PRICE_LIMIT) {
         Alert.alert(PRICE_ERROR_TITLE, addItemScreenText.PRICE_ERROR_MESSAGE);
         return;
       }
 
-      addValuable(parseInt(price), name, selectedImage, description);
+      addValuable(parseInt(price, 10), name, selectedImage, description);
       navigation.pop();
     } else {
       Alert.alert(

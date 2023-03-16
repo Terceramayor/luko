@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { DeviceService } from "../../../Services/DeviceService/DeviceService";
 import { colors } from "../../../Theme/Colors";
-import { fonts, getFontStyle, size } from "../../../Theme/Fonts";
+import { getFontStyle } from "../../../Theme/Fonts";
 import { LayoutDimensions } from "../../../Theme/LayoutDimensions";
 
 const CARD_WIDTH =
