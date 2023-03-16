@@ -30,7 +30,8 @@
     "react-native-screens": "~3.18.0",
     "react-native-web": "~0.18.7",
     "react-test-renderer": "18.1.0",
-    "zustand": "^4.3.6"
+    "zustand": "^4.3.6",
+    "expo-updates": "~0.15.6"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
