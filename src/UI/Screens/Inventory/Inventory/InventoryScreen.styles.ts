@@ -1,8 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { DeviceService } from "../../../../Services/DeviceService/DeviceService";
-import { colors } from "../../../../theme/Colors";
-import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
+import { LayoutDimensions } from "../../../../Theme/LayoutDimensions";
 
 export const inventoryScreenStyles = StyleSheet.create({
   container: {

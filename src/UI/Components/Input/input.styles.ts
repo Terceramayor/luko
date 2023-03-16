@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
-import { colors } from "../../../theme/Colors";
-import { getFontStyle } from "../../../theme/Fonts";
-import { LayoutDimensions } from "../../../theme/LayoutDimensions";
+import { colors } from "../../../Theme/Colors";
+import { getFontStyle } from "../../../Theme/Fonts";
+import { LayoutDimensions } from "../../../Theme/LayoutDimensions";
 
 export const inputStyles = StyleSheet.create({
   tagText: {

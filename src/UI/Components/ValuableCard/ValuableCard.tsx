@@ -1,12 +1,5 @@
 import { useCallback } from "react";
-import {
-  Image,
-  StyleProp,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 
 import { valuableCardStyles } from "./ValuableCard.styles";
 import { useInventoryStore } from "../../../Stores/Inventory/InventoryStore";

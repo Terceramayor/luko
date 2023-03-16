@@ -3,8 +3,8 @@ import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { fonts } from "./src/Theme/Fonts";
 import Navigation from "./src/navigation";
-import { fonts } from "./src/theme/Fonts";
 
 export default function App() {
   const [fontsLoaded] = useFonts({

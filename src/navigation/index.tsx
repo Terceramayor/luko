@@ -15,11 +15,11 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from "./types";
+import { colors } from "../Theme/Colors";
+import { fonts } from "../Theme/Fonts";
 import { FallbackScreen } from "../UI/Screens/Fallback/FallbackScreen";
 import AddItemScreen from "../UI/Screens/Inventory/AddItem/AddItemScreen";
 import InventoryScreen from "../UI/Screens/Inventory/Inventory/InventoryScreen";
-import { colors } from "../theme/Colors";
-import { fonts } from "../theme/Fonts";
 
 export default function Navigation() {
   return (

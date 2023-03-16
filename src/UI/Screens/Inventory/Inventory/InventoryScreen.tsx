@@ -1,20 +1,17 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { StyleSheet, View, FlatList, ListRenderItem } from "react-native";
+import { useCallback, useEffect } from "react";
+import { View, FlatList, ListRenderItem } from "react-native";
 
 import { inventoryScreenStyles } from "./InventoryScreen.styles";
 import { Valuable } from "../../../../Models/Inventory/Domain/Valuable";
-import { DeviceService } from "../../../../Services/DeviceService/DeviceService";
 import { useInventoryStore } from "../../../../Stores/Inventory/InventoryStore";
 import { RootTabScreenProps } from "../../../../navigation/types";
 import { Title } from "../../../Components/Title/Title";
 import { ValuableCard } from "../../../Components/ValuableCard/ValuableCard";
 
 const { container, listInnerContainer, listColumn } = inventoryScreenStyles;
-const CARD_WIDTH = DeviceService.getScreenWidth() * 0.4;
 
 export default function InventoryScreen({
   navigation,
-  route,
 }: RootTabScreenProps<"Inventory">) {
   useEffect(() => {
     getValuables();

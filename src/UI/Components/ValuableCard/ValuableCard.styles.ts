@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
 import { DeviceService } from "../../../Services/DeviceService/DeviceService";
-import { colors } from "../../../theme/Colors";
-import { fonts, getFontStyle, size } from "../../../theme/Fonts";
-import { LayoutDimensions } from "../../../theme/LayoutDimensions";
+import { colors } from "../../../Theme/Colors";
+import { fonts, getFontStyle, size } from "../../../Theme/Fonts";
+import { LayoutDimensions } from "../../../Theme/LayoutDimensions";
 
 const CARD_WIDTH =
   (DeviceService.getScreenWidth() - 3 * LayoutDimensions.spacing6x) * 0.5;
@@ -20,11 +20,10 @@ export const valuableCardStyles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 5,
-
-    elevation: 3,
+    elevation: 5,
   },
   image: {
-    borderRadius: 5,
+    borderRadius: 10,
     height: CARD_WIDTH,
     width: CARD_WIDTH,
   },

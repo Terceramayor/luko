@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
-import { colors } from "../../../../theme/Colors";
-import { LayoutDimensions } from "../../../../theme/LayoutDimensions";
+import { colors } from "../../../../Theme/Colors";
+import { LayoutDimensions } from "../../../../Theme/LayoutDimensions";
 
 export const addItemScreenStyles = StyleSheet.create({
   container: {

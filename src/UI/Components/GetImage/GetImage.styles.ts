@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
 import { DeviceService } from "../../../Services/DeviceService/DeviceService";
-import { colors } from "../../../theme/Colors";
-import { LayoutDimensions } from "../../../theme/LayoutDimensions";
+import { colors } from "../../../Theme/Colors";
+import { LayoutDimensions } from "../../../Theme/LayoutDimensions";
 
 const IMAGE_DIMENSION_REFERENCE = DeviceService.getScreenWidth() * 0.15;
 const IMAGE_WRAPPER = IMAGE_DIMENSION_REFERENCE * 2.5;

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 
-import { fonts } from "../../../theme/Fonts";
+import { fonts } from "../../../Theme/Fonts";
 import AddButton from "../AddButtom/AddButton";
 
 export const Title = (props: {
