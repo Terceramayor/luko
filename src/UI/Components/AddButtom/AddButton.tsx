@@ -1,15 +1,13 @@
-import { StyleSheet, Pressable, PressableProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { colors } from "../theme/colors";
+import { StyleSheet, Pressable, PressableProps } from "react-native";
+
+import { colors } from "../../../Theme/Colors";
 
 export default function AddButton(props: PressableProps) {
   return (
     <Pressable
       onPress={props.onPress}
-      style={({ pressed }) => [
-        { opacity: pressed ? 0.5 : 1 },
-        styles.button,
-      ]}
+      style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }, styles.button]}
       pressRetentionOffset={10}
     >
       <MaterialCommunityIcons name="plus" size={24} color="#FFFFFF" />

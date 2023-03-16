@@ -17,8 +17,8 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Root: NavigatorScreenParams<RootTabParamList> | {title:string};
-  AddItem: undefined;
+  Root: NavigatorScreenParams<RootTabParamList> | { title: string };
+  AddItemScreen: undefined;
   NotFound: undefined;
 };
 
@@ -31,7 +31,6 @@ export type RootTabParamList = {
   Insurance: undefined;
   Realty: undefined;
   Menu: undefined;
-  AddItemScreen: undefined
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
@@ -39,14 +38,3 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
     BottomTabScreenProps<RootTabParamList, Screen>,
     NativeStackScreenProps<RootStackParamList>
   >;
-
-export type InventoryItem = {
-  id?: string;
-  name: string;
-  value: string | number;
-  type?: string;
-  description?: string;
-  photo?: string;
-};
-
-export type Items = InventoryItem[];

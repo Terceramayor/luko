@@ -3,23 +3,23 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import * as React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Pressable, Text, View } from "react-native";
+import * as React from "react";
+import { Pressable, Text } from "react-native";
 
-import InventoryScreen from "../screens/InventoryScreen";
-import AddItemScreen from "../screens/AddItemScreen";
 import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
 } from "./types";
-import { colors } from "../theme/colors";
-import { fonts } from "../theme/fonts";
-import { Title } from "../components/Title";
+import { colors } from "../Theme/Colors";
+import { fonts } from "../Theme/Fonts";
+import { FallbackScreen } from "../UI/Screens/Fallback/FallbackScreen";
+import AddItemScreen from "../UI/Screens/Inventory/AddItem/AddItemScreen";
+import InventoryScreen from "../UI/Screens/Inventory/Inventory/InventoryScreen";
 
 export default function Navigation() {
   return (
@@ -35,19 +35,6 @@ export default function Navigation() {
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const NotFound = () => <Text>Not found</Text>;
-const FallbackScreen = ({ route }: RootTabScreenProps<"Inventory">) => {
-  return (
-    <View
-      style={{
-        backgroundColor: colors.background,
-        flex: 1,
-        paddingHorizontal: 20,
-      }}
-    >
-      <Title>{route?.name}</Title>
-    </View>
-  );
-};
 
 function RootNavigator() {
   return (
@@ -65,7 +52,7 @@ function RootNavigator() {
       <Stack.Group
         screenOptions={{ presentation: "modal", headerShown: false }}
       >
-        <Stack.Screen name="AddItem" component={AddItemScreen} />
+        <Stack.Screen name="AddItemScreen" component={AddItemScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );
